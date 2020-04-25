@@ -1,0 +1,104 @@
+void S(){
+  G();
+}
+
+void G(){
+  P();
+  while (token == 'id'){
+    P();
+  }
+}
+
+void P(){
+  eat('id');
+  eat(':');
+  R();
+}
+
+void R(){
+  while (token == 'id'){
+    eat('id');
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+
+void S(){
+  while(token == '+'){
+    eat('+');
+    eat('a');
+  }
+  eat('a');
+  while(token == '*'){
+    eat('*');
+    eat('a');
+  }
+  eat('a');
+}
+
+/*----------------------------------------------------------------------------------*/
+
+void S(){
+  while(token == 'a'){
+    eat('a');
+    while(token == 'ba'){
+      eat('ba');
+    }
+    eat('b');
+    while(token == 'ba'){
+      eat('ba');
+    }
+  }
+  while(token == 'b'){
+    eat('a');
+    while(token == 'ab'){
+      eat('ab');
+    }
+    eat('a');
+    while(token == 'ab'){
+      eat('ab');
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+
+void E(){
+  while(token == 'while'){
+    eat('while');
+    E();
+    eat('do');
+    while(token == 'id :='){
+      eat('id :=');
+    }
+    eat('id');
+  }
+  while(token == 'id :='){
+    while(token == 'while'){
+      eat('while');
+      E();
+      eat('do');
+      while(token == 'id :='){
+        eat('id :=');
+      }
+      eat('id');
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------*/
+
+void S(){
+  while(token == '('){
+    while(token == '('){
+      eat('(');
+      eat(')');
+    }
+    eat('(');
+    while(token == '('){
+      eat('(');
+      eat(')');
+    }
+    eat(')');
+  }
+}
